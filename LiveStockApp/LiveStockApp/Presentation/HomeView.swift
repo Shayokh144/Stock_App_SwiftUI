@@ -19,16 +19,25 @@ struct HomeView: View {
                         HStack {
                             Text(stock.metaData.symbol)
                             Spacer()
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .frame(width: 150, height: 50.0)
+                            LineChart(values: stock.closeValues)
+                                .fill(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.green.opacity(0.7), .green.opacity(0.2),.green.opacity(0.0)]),
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                                .frame(width: 150.0, height: 50.0)
+
                             VStack(alignment: .trailing) {
                                 Text(stock.latestClose)
                                 Text("change")
                             }
+                            .frame(width: 100.0)
                         }
                     }
                 } else {
-                    Text("No Data found")
+                    Text("Searching for current data....")
                 }
             }
             .navigationTitle("My Stocks")

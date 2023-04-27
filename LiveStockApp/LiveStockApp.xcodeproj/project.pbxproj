@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04985D1229FA6FA800DA2C65 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04985D1129FA6FA800DA2C65 /* LineChart.swift */; };
 		04DEEAD629F8084500763699 /* LiveStockAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEEAD529F8084500763699 /* LiveStockAppApp.swift */; };
 		04DEEAD829F8084500763699 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEEAD729F8084500763699 /* HomeView.swift */; };
 		04DEEADA29F8084700763699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DEEAD929F8084700763699 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04985D1129FA6FA800DA2C65 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		04DEEAD229F8084500763699 /* LiveStockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DEEAD529F8084500763699 /* LiveStockAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStockAppApp.swift; sourceTree = "<group>"; };
 		04DEEAD729F8084500763699 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04985D1029FA6F9300DA2C65 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				04985D1129FA6FA800DA2C65 /* LineChart.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		04DEEAC929F8084500763699 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		04DEEAED29F8318500763699 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				04985D1029FA6F9300DA2C65 /* Helper */,
 				04DEEAD729F8084500763699 /* HomeView.swift */,
 				04DEEAEE29F831DD00763699 /* HomeViewModel.swift */,
 			);
@@ -176,6 +187,7 @@
 				04DEEAEF29F831DD00763699 /* HomeViewModel.swift in Sources */,
 				04DEEAD829F8084500763699 /* HomeView.swift in Sources */,
 				04DEEAE229F8084700763699 /* LiveStockApp.xcdatamodeld in Sources */,
+				04985D1229FA6FA800DA2C65 /* LineChart.swift in Sources */,
 				04DEEAF129F832B600763699 /* Constants.swift in Sources */,
 				04DEEAEC29F82DBF00763699 /* StockData.swift in Sources */,
 				04DEEAD629F8084500763699 /* LiveStockAppApp.swift in Sources */,

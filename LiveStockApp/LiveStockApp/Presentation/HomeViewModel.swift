@@ -11,10 +11,20 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
 
-    private var cancelable = Set<AnyCancellable>();
+    private var cancelable = Set<AnyCancellable>()
+    private let symbols: [String] = ["AAPL", "TSLA", "IBM"]
+
+    @Published var stockDataList = [StockData]()
 
     init() {
-        // getStockData(for: "IBM")
+        loadAllSymbols()
+    }
+
+    func loadAllSymbols() {
+        stockDataList.removeAll()
+        symbols.forEach { symbol in
+            getStockData(for: symbol)
+        }
     }
 
     func getStockData(for symbol: String) {
@@ -36,8 +46,10 @@ final class HomeViewModel: ObservableObject {
                 case .finished:
                     return
                 }
-            } receiveValue: { stockData in
-                print(stockData)
+            } receiveValue: { [weak self] stockData in
+                DispatchQueue.main.async { [weak self] in
+                    self?.stockDataList.append(stockData)
+                }
             }
             .store(in: &cancelable)
     }

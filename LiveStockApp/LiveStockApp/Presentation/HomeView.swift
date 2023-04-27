@@ -9,23 +9,26 @@ import SwiftUI
 
 struct HomeView: View {
 
-    let viewModel = HomeViewModel()
+    @ObservedObject private var viewModel = HomeViewModel()
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(0...10, id: \.self) { number in
-
-                    HStack {
-                        Text("symbol")
-                        Spacer()
-                        RoundedRectangle(cornerRadius: 10.0)
-                            .frame(width: 150, height: 50.0)
-                        VStack(alignment: .trailing) {
-                            Text("value")
-                            Text("change")
+                if !viewModel.stockDataList.isEmpty {
+                    ForEach(viewModel.stockDataList) { stock in
+                        HStack {
+                            Text(stock.metaData.symbol)
+                            Spacer()
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .frame(width: 150, height: 50.0)
+                            VStack(alignment: .trailing) {
+                                Text(stock.latestClose)
+                                Text("change")
+                            }
                         }
                     }
+                } else {
+                    Text("No Data found")
                 }
             }
             .navigationTitle("My Stocks")

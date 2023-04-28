@@ -40,14 +40,10 @@ struct HomeView: View {
                             .frame(width: 100.0)
                         }
                     }
+                    .onDelete(perform: viewModel.deleteStock(at:))
                 }
             }
             .navigationTitle("My Stocks")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    EditButton()
-                }
-            }
         }
     }
 }

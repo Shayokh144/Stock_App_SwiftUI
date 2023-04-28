@@ -41,8 +41,23 @@ final class HomeViewModel: ObservableObject {
         } catch {
             print(error)
         }
+        stockEntities.append(newStock)
         getStockData(for: symbol)
         symbol = ""
+    }
+
+    func deleteStock(at indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
+
+        stockDataList.remove(at: index)
+
+        let stockToRemove = stockEntities.remove(at: index)
+        coreDataContext.delete(stockToRemove)
+        do {
+            try coreDataContext.save()
+        } catch {
+            print(error)
+        }
     }
 
     func loadAllSymbols() {

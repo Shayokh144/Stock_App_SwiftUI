@@ -18,6 +18,7 @@ struct HomeView: View {
                     TextField("Symbol", text: $viewModel.symbol)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button("Add", action: viewModel.addStock)
+                        .disabled(!viewModel.isValidSymbol)
                 }
                 if !viewModel.stockDataList.isEmpty {
                     ForEach(viewModel.stockDataList) { stock in

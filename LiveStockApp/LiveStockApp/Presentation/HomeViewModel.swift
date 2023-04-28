@@ -17,12 +17,14 @@ final class HomeViewModel: ObservableObject {
 
     @Published var stockDataList = [StockData]()
     @Published var symbol = ""
+    @Published var isValidSymbol = false
     @Published var stockEntities = [StockEntity]()
 
     init() {
         coreDataContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
         loadFromCoreData()
         loadAllSymbols()
+        validateSymbolField()
     }
 
     func loadFromCoreData() {
@@ -31,6 +33,14 @@ final class HomeViewModel: ObservableObject {
         } catch {
             print(error)
         }
+    }
+
+    func validateSymbolField() {
+        $symbol
+            .sink { [weak self] newValue in
+                self?.isValidSymbol = !newValue.isEmpty
+            }
+            .store(in: &cancelable)
     }
 
     func addStock() {

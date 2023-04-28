@@ -14,6 +14,11 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
+                HStack {
+                    TextField("Symbol", text: $viewModel.symbol)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button("Add", action: viewModel.addStock)
+                }
                 if !viewModel.stockDataList.isEmpty {
                     ForEach(viewModel.stockDataList) { stock in
                         HStack {
@@ -31,13 +36,10 @@ struct HomeView: View {
 
                             VStack(alignment: .trailing) {
                                 Text(stock.latestClose)
-                                Text("change")
                             }
                             .frame(width: 100.0)
                         }
                     }
-                } else {
-                    Text("Searching for current data....")
                 }
             }
             .navigationTitle("My Stocks")

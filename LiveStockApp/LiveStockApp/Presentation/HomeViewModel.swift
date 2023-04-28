@@ -12,18 +12,41 @@ import Combine
 final class HomeViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
-    private let symbols: [String] = ["AAPL", "TSLA", "IBM"]
+    private let coreDataContext = PersistenceController.shared.container.viewContext
 
     @Published var stockDataList = [StockData]()
+    @Published var symbol = ""
+    @Published var stockEntities = [StockEntity]()
 
     init() {
+        loadFromCoreData()
         loadAllSymbols()
+    }
+
+    func loadFromCoreData() {
+        do {
+            stockEntities = try coreDataContext.fetch(StockEntity.fetchRequest())
+        } catch {
+            print(error)
+        }
+    }
+
+    func addStock() {
+        let newStock = StockEntity(context: coreDataContext)
+        newStock.symbol = symbol
+        do {
+            try coreDataContext.save()
+        } catch {
+            print(error)
+        }
+        getStockData(for: symbol)
+        symbol = ""
     }
 
     func loadAllSymbols() {
         stockDataList.removeAll()
-        symbols.forEach { symbol in
-            getStockData(for: symbol)
+        stockEntities.forEach { stockEntity in
+            getStockData(for: stockEntity.symbol ??  "")
         }
     }
 

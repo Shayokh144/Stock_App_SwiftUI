@@ -2,5 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StockEntity" representedClassName="StockEntity" syncable="YES" codeGenerationType="class">
         <attribute name="symbol" attributeType="String" defaultValueString=""/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="symbol"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

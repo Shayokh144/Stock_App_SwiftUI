@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreData
 
 final class HomeViewModel: ObservableObject {
 
@@ -19,6 +20,7 @@ final class HomeViewModel: ObservableObject {
     @Published var stockEntities = [StockEntity]()
 
     init() {
+        coreDataContext.mergePolicy = NSMergePolicy(merge: .mergeByPropertyObjectTrumpMergePolicyType)
         loadFromCoreData()
         loadAllSymbols()
     }

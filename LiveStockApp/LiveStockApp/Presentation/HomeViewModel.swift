@@ -78,7 +78,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     func getStockData(for symbol: String) {
-        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=\(symbol)&interval=5min&apikey=\(Constants.apKey)")!
+        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=\(symbol)&interval=5min&apikey=\(Constants.apiKey)")!
         URLSession.shared
             .dataTaskPublisher(for: url)
             .tryMap { element -> Data in

@@ -40,11 +40,15 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
+// Actual view that will appear as a widget view
 struct StocksWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text(entry.date, style: .time)
+            Text(entry.configuration.symbol ?? "No symbol given")
+        }
     }
 }
 
@@ -55,14 +59,15 @@ struct StocksWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             StocksWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName("LiveStockApp Widget") // useful if you want to provide multiple widgets
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium]) // increase size of widget
     }
 }
 
 struct StocksWidget_Previews: PreviewProvider {
     static var previews: some View {
         StocksWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042C3BB12A03A2A5002B74DA /* StockWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C3BB02A03A2A5002B74DA /* StockWidgetView.swift */; };
+		047A9D192A03A136001D99F7 /* TimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A9D182A03A136001D99F7 /* TimelineProvider.swift */; };
+		047A9D1B2A03A1A8001D99F7 /* TimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A9D1A2A03A1A8001D99F7 /* TimelineEntry.swift */; };
 		04985D1229FA6FA800DA2C65 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04985D1129FA6FA800DA2C65 /* LineChart.swift */; };
 		04C38BB429FBC2C4003FA0E3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C38BB329FBC2C4003FA0E3 /* WidgetKit.framework */; };
 		04C38BB629FBC2C4003FA0E3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C38BB529FBC2C4003FA0E3 /* SwiftUI.framework */; };
@@ -53,6 +56,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		042C3BB02A03A2A5002B74DA /* StockWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockWidgetView.swift; sourceTree = "<group>"; };
+		047A9D182A03A136001D99F7 /* TimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProvider.swift; sourceTree = "<group>"; };
+		047A9D1A2A03A1A8001D99F7 /* TimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntry.swift; sourceTree = "<group>"; };
 		04985D1129FA6FA800DA2C65 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		04C38BB129FBC2C4003FA0E3 /* StocksWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StocksWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C38BB329FBC2C4003FA0E3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +129,9 @@
 				04C38BBE29FBC2C4003FA0E3 /* StocksWidget.intentdefinition */,
 				04C38BBF29FBC2C6003FA0E3 /* Assets.xcassets */,
 				04C38BC129FBC2C6003FA0E3 /* Info.plist */,
+				047A9D182A03A136001D99F7 /* TimelineProvider.swift */,
+				047A9D1A2A03A1A8001D99F7 /* TimelineEntry.swift */,
+				042C3BB02A03A2A5002B74DA /* StockWidgetView.swift */,
 			);
 			path = StocksWidget;
 			sourceTree = "<group>";
@@ -292,8 +301,11 @@
 			files = (
 				04C38BBD29FBC2C4003FA0E3 /* StocksWidget.swift in Sources */,
 				04C38BC229FBC2C6003FA0E3 /* StocksWidget.intentdefinition in Sources */,
+				042C3BB12A03A2A5002B74DA /* StockWidgetView.swift in Sources */,
 				04C38BB929FBC2C4003FA0E3 /* StocksWidgetBundle.swift in Sources */,
+				047A9D1B2A03A1A8001D99F7 /* TimelineEntry.swift in Sources */,
 				04C38BBB29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift in Sources */,
+				047A9D192A03A136001D99F7 /* TimelineProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

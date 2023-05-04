@@ -42,6 +42,12 @@ struct HomeView: View {
                         }
                     }
                     .onDelete(perform: viewModel.deleteStock(at:))
+                } else {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
                 }
             }
             .navigationTitle("My Stocks")

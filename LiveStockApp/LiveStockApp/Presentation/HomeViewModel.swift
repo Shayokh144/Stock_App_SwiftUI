@@ -73,22 +73,15 @@ final class HomeViewModel: ObservableObject {
     func loadAllSymbols() {
         stockDataList.removeAll()
         stockEntities.forEach { stockEntity in
-            getStockData(for: stockEntity.symbol ??  "")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.getStockData(for: stockEntity.symbol ??  "")
+            }
         }
     }
 
     func getStockData(for symbol: String) {
-        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=\(symbol)&interval=5min&apikey=\(Constants.apiKey)")!
-        URLSession.shared
-            .dataTaskPublisher(for: url)
-            .tryMap { element -> Data in
-                guard let httpResponse = element.response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw URLError(.badServerResponse)
-                }
-                return element.data
-            }
-            .decode(type: StockData.self, decoder: JSONDecoder())
+        StockAPIService
+            .getStockData(for: symbol)
             .sink { completion in
                 switch completion {
                 case .failure(let error):

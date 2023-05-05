@@ -8,29 +8,54 @@
 import Foundation
 import WidgetKit
 import Intents
+import Combine
 
-struct Provider: IntentTimelineProvider {
+class Provider: IntentTimelineProvider {
+    var cancellable: Set<AnyCancellable> = []
+
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stockData: nil)
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
+        createTimelineEntry(date: Date(), configuration: configuration, completion: completion)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-        var entries: [SimpleEntry] = []
+        createTimeline(date: Date(), configuration: configuration, completion: completion)
+    }
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+
+    private func createTimeline(date: Date, configuration: ConfigurationIntent, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+        getStockData(for: configuration.symbol ?? "") { stockData in
+            let entry = SimpleEntry(date: date, configuration: configuration, stockData: stockData)
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            completion(timeline)
         }
+    }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+    private func createTimelineEntry(date: Date, configuration: ConfigurationIntent, completion: @escaping (SimpleEntry) -> ()) {
+        getStockData(for: configuration.symbol ?? "") { stockData in
+            let entry = SimpleEntry(date: date, configuration: configuration, stockData: stockData)
+            completion(entry)
+        }
+    }
+
+    private func getStockData(for symbol: String, completion: @escaping (StockData) -> ()) {
+        StockAPIService.getStockData(for: symbol)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    return
+                }
+            } receiveValue: { stockData in
+                print("widget data:\n \(stockData)")
+                DispatchQueue.main.async {
+                    completion(stockData)
+                }
+            }
+            .store(in: &cancellable)
     }
 }

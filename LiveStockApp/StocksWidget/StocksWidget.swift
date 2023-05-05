@@ -24,7 +24,7 @@ struct StocksWidget: Widget {
 
 struct StocksWidget_Previews: PreviewProvider {
     static var previews: some View {
-        StocksWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        StocksWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stockData: nil))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

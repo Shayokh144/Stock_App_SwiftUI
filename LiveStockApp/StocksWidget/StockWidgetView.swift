@@ -13,8 +13,17 @@ struct StocksWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text(entry.date, style: .time)
             Text(entry.configuration.symbol ?? "No symbol given")
+            Text(entry.stockData?.latestClose ?? "No value given")
+            LineChart(values: entry.stockData?.closeValues ?? [])
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.green.opacity(0.7), .green.opacity(0.2),.green.opacity(0.0)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .frame(width: 150.0, height: 50.0)
         }
     }
 }

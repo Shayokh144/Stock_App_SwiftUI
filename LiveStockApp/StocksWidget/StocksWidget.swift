@@ -18,7 +18,7 @@ struct StocksWidget: Widget {
         }
         .configurationDisplayName("LiveStockApp Widget") // useful if you want to provide multiple widgets
         .description("This is an example widget.")
-        .supportedFamilies([.systemMedium]) // increase size of widget
+        .supportedFamilies([.systemSmall,.systemMedium]) // increase size of widget
     }
 }
 

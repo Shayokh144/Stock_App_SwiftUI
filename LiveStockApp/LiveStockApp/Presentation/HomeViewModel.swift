@@ -91,6 +91,7 @@ final class HomeViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] stockData in
                 DispatchQueue.main.async { [weak self] in
+                    self?.stockDataList.removeAll { $0.metaData.symbol == symbol }
                     self?.stockDataList.append(stockData)
                 }
             }

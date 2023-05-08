@@ -19,10 +19,10 @@ struct StocksWidgetEntryView : View {
             Text("Small Widget")
         case .systemMedium:
             WidgetView(entry: entry)
+                .widgetURL(entry.stockData?.wUrl)
         default:
             Text("Default Widget")
         }
-
     }
 }
 

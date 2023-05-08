@@ -53,10 +53,20 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("My Stocks")
-        }.onChange(of: scenePhase) { newPhase in
+        }
+        .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
                 WidgetCenter.shared.reloadTimelines(ofKind: "StocksWidget")
             }
+        }
+        .onOpenURL { url in
+            guard url.scheme == "livestockapp",
+                  url.host == "symbol" else {
+                return
+            }
+            let stockSymbol = url.pathComponents[1]
+            viewModel.symbol = stockSymbol
+            viewModel.addStock()
         }
     }
 }

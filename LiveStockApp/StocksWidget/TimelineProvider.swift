@@ -35,10 +35,8 @@ class Provider: IntentTimelineProvider {
     }
 
     private func createTimelineEntry(date: Date, configuration: ConfigurationIntent, completion: @escaping (SimpleEntry) -> ()) {
-        getStockData(for: configuration.symbol ?? "") { stockData in
-            let entry = SimpleEntry(date: date, configuration: configuration, stockData: stockData)
-            completion(entry)
-        }
+        let entry = SimpleEntry(date: date, configuration: configuration, stockData: nil)
+        completion(entry)
     }
 
     private func getStockData(for symbol: String, completion: @escaping (StockData) -> ()) {

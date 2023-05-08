@@ -31,17 +31,21 @@ struct WidgetView : View {
     var entry: Provider.Entry
     var body: some View {
         VStack {
-            Text(entry.configuration.symbol ?? "No symbol given")
-            Text(entry.stockData?.latestClose ?? "No value given")
-            LineChart(values: entry.stockData?.closeValues ?? [])
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.green.opacity(0.7), .green.opacity(0.2),.green.opacity(0.0)]),
-                        startPoint: .top,
-                        endPoint: .bottom
+            if entry.stockData == nil {
+                Text("Loading stock data....")
+            } else {
+                Text(entry.configuration.symbol ?? "No symbol given")
+                Text(entry.stockData?.latestClose ?? "No value given")
+                LineChart(values: entry.stockData?.closeValues ?? [])
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(colors: [.green.opacity(0.7), .green.opacity(0.2),.green.opacity(0.0)]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
                     )
-                )
-                .frame(width: 150.0, height: 50.0)
+                    .frame(width: 150.0, height: 50.0)
+            }
         }
     }
 }

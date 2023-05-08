@@ -16,7 +16,7 @@ struct StocksWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             StocksWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("LiveStockApp Widget") // useful if you want to provide multiple widgets
+        .configurationDisplayName("LiveStockApp Widget") // configuration page title
         .description("This is an example widget.")
         .supportedFamilies([.systemSmall,.systemMedium]) // increase size of widget
     }

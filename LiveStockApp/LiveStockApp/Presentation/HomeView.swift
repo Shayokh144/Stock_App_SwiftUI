@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct HomeView: View {
 
+    @Environment(\.scenePhase) var scenePhase
     @ObservedObject private var viewModel = HomeViewModel()
 
     var body: some View {
@@ -51,6 +53,10 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("My Stocks")
+        }.onChange(of: scenePhase) { newPhase in
+            if newPhase == .background {
+                WidgetCenter.shared.reloadTimelines(ofKind: "StocksWidget")
+            }
         }
     }
 }

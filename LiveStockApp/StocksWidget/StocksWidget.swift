@@ -18,7 +18,8 @@ struct StocksWidget: Widget {
         }
         .configurationDisplayName("LiveStockApp Widget") // configuration page title
         .description("This is an example widget.")
-        .supportedFamilies([.systemSmall,.systemMedium]) // increase size of widget
+        .supportedFamilies([.systemSmall,.systemMedium, .accessoryRectangular]) // increase size of widget
+        // accessoryRectangular is for lock screen widget
     }
 }
 

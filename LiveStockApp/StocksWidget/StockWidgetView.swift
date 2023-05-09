@@ -17,7 +17,7 @@ struct StocksWidgetEntryView : View {
         switch widgetFamily {
         case .systemSmall:
             Text("Small Widget")
-        case .systemMedium:
+        case .systemMedium, .accessoryRectangular:
             WidgetView(entry: entry)
                 .widgetURL(entry.stockData?.wUrl)
         default:

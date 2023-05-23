@@ -19,7 +19,6 @@
 		04C38BB429FBC2C4003FA0E3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C38BB329FBC2C4003FA0E3 /* WidgetKit.framework */; };
 		04C38BB629FBC2C4003FA0E3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C38BB529FBC2C4003FA0E3 /* SwiftUI.framework */; };
 		04C38BB929FBC2C4003FA0E3 /* StocksWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C38BB829FBC2C4003FA0E3 /* StocksWidgetBundle.swift */; };
-		04C38BBB29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C38BBA29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift */; };
 		04C38BBD29FBC2C4003FA0E3 /* StocksWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C38BBC29FBC2C4003FA0E3 /* StocksWidget.swift */; };
 		04C38BC029FBC2C6003FA0E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C38BBF29FBC2C6003FA0E3 /* Assets.xcassets */; };
 		04C38BC229FBC2C6003FA0E3 /* StocksWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 04C38BBE29FBC2C4003FA0E3 /* StocksWidget.intentdefinition */; };
@@ -70,7 +69,6 @@
 		04C38BB329FBC2C4003FA0E3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		04C38BB529FBC2C4003FA0E3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		04C38BB829FBC2C4003FA0E3 /* StocksWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksWidgetBundle.swift; sourceTree = "<group>"; };
-		04C38BBA29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		04C38BBC29FBC2C4003FA0E3 /* StocksWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksWidget.swift; sourceTree = "<group>"; };
 		04C38BBE29FBC2C4003FA0E3 /* StocksWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = StocksWidget.intentdefinition; sourceTree = "<group>"; };
 		04C38BBF29FBC2C6003FA0E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				04C38BB829FBC2C4003FA0E3 /* StocksWidgetBundle.swift */,
-				04C38BBA29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift */,
 				04C38BBC29FBC2C4003FA0E3 /* StocksWidget.swift */,
 				04C38BBE29FBC2C4003FA0E3 /* StocksWidget.intentdefinition */,
 				04C38BBF29FBC2C6003FA0E3 /* Assets.xcassets */,
@@ -321,7 +318,6 @@
 				04C38BB929FBC2C4003FA0E3 /* StocksWidgetBundle.swift in Sources */,
 				042C3BB22A03A3F6002B74DA /* LineChart.swift in Sources */,
 				047A9D1B2A03A1A8001D99F7 /* TimelineEntry.swift in Sources */,
-				04C38BBB29FBC2C4003FA0E3 /* StocksWidgetLiveActivity.swift in Sources */,
 				042C3BB72A03AA90002B74DA /* StockAPIService.swift in Sources */,
 				047A9D192A03A136001D99F7 /* TimelineProvider.swift in Sources */,
 				042C3BB32A03A408002B74DA /* StockData.swift in Sources */,

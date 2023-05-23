@@ -29,7 +29,7 @@ class Provider: IntentTimelineProvider {
     private func createTimeline(date: Date, configuration: ConfigurationIntent, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
         getStockData(for: configuration.symbol ?? "") { stockData in
             let entry = SimpleEntry(date: date, configuration: configuration, stockData: stockData)
-            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            let timeline = Timeline(entries: [entry], policy: .never)
             completion(timeline)
         }
     }
@@ -49,7 +49,6 @@ class Provider: IntentTimelineProvider {
                     return
                 }
             } receiveValue: { stockData in
-                print("widget data:\n \(stockData)")
                 DispatchQueue.main.async {
                     completion(stockData)
                 }

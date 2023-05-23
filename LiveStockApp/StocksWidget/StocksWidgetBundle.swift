@@ -12,6 +12,5 @@ import SwiftUI
 struct StocksWidgetBundle: WidgetBundle {
     var body: some Widget {
         StocksWidget()
-        //StocksWidgetLiveActivity()
     }
 }
